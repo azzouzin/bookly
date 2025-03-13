@@ -4,20 +4,20 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Color(0xff100B20),
-    fontFamily: 'Roboto',
+    fontFamily: 'GTSectra',
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.white,
       ),
       bodyLarge: TextStyle(
         fontSize: 16,
-        color: Colors.black87,
+        color: Colors.white,
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
-        color: Colors.black54,
+        color: Colors.white,
       ),
     ),
     colorScheme: ColorScheme.fromSeed(
