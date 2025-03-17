@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:bookly/features/splash/presentation/view/splash_view.dart';
 import 'package:bookly/features/home/presentation/home_view.dart';
 
+import 'custom_page_transitions.dart';
+
 abstract class AppRouter {
   static final router = GoRouter(
     routes: [
@@ -11,7 +13,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: '/home',
-        builder: (context, state) => const HomeView(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const HomeView(),
+          transitionsBuilder: CustomPageTransitions.slideTransition,
+        ),
       ),
     ],
   );

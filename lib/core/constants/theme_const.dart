@@ -9,15 +9,15 @@ class AppTheme {
       displayLarge: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Colors.white,
+        color: Colors.black,
       ),
       bodyLarge: TextStyle(
         fontSize: 16,
-        color: Colors.white,
+        color: Colors.black87,
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
-        color: Colors.white,
+        color: Colors.black54,
       ),
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -30,7 +30,7 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.grey[900],
+    scaffoldBackgroundColor: Color(0xff100B20),
     fontFamily: 'Roboto',
     textTheme: const TextTheme(
       displayLarge: TextStyle(
@@ -55,4 +55,6 @@ class AppTheme {
       brightness: Brightness.dark,
     ),
   );
+
+  static const Duration navigationDuration = Duration(seconds: 1);
 }

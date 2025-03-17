@@ -9,11 +9,11 @@ class SplashCubit extends Cubit<SplashState> {
 
   void navigateToHome(BuildContext context) {
     emit(SplashLoading());
-    
+
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        GoRouter.of(context).push('/home');
+        GoRouter.of(context).pushReplacement('/home');
         emit(SplashNavigationComplete());
       },
     );
