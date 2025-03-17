@@ -1,6 +1,9 @@
 import 'package:bookly/features/home/presentation/view/widgets/home_view_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
+import '../../../../../core/utils/styles.dart';
+import 'banner_list.dart';
 import 'banner_list_item.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -8,35 +11,25 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomAppBar(),
-        //    BannerListItem(),
         BannerList(),
+        Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const Gap(40), // Adds an empty space of 20 pixels.
+              Text(
+                "Best Seller",
+                style: TextThemes.titleMeduiem,
+              ),
+            ],
+          ),
+        ),
       ],
     ));
-  }
-}
-
-class BannerList extends StatelessWidget {
-  const BannerList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(8),
-            child: const BannerListItem(),
-          );
-        },
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-      ),
-    );
   }
 }
