@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:bookly/features/splash/presentation/view/splash_view.dart';
-import 'package:bookly/features/home/presentation/home_view.dart';
+import 'package:bookly/features/home/presentation/view/home_view.dart';
 
 import 'custom_page_transitions.dart';
 
