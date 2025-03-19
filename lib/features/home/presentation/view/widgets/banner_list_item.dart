@@ -1,4 +1,5 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:bookly/core/constants/assets_const.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 
@@ -13,7 +14,7 @@ class BannerListItem extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.fill,
             image: AssetImage(
-              'assets/images/Green_Book.png',
+              AssetsData.testImage,
             ),
           ),
           borderRadius: BorderRadius.circular(8),

@@ -6,9 +6,14 @@ abstract class TextThemes {
     fontSize: 22,
     fontWeight: FontWeight.bold,
   );
-  static TextStyle titleMeduiem = GoogleFonts.montserrat(
+  static TextStyle TextStyle18 = GoogleFonts.montserrat(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );
+  static TextStyle TextStyle16 = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
   );
 }
