@@ -4,12 +4,12 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
+  BookRating({super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+  MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         Icon(
           Icons.star,
@@ -21,9 +21,12 @@ class BookRating extends StatelessWidget {
           style: TextThemes.TextStyle18,
         ),
         Gap(5),
-        Text(
-          '(1234)',
-          style: TextThemes.TextStyle16,
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            '(1234)',
+            style: TextThemes.TextStyle16,
+          ),
         ),
       ],
     );

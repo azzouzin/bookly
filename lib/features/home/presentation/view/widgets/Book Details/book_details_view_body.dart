@@ -3,8 +3,10 @@ import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../../core/utils/widgets/custom_button.dart';
 import '../banner_list_item.dart';
 import '../book_rating_app.dart';
+import '../books_actions.dart';
 import '../custom_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -27,6 +29,7 @@ class BookDetailsViewBody extends StatelessWidget {
               ),
               child: BannerListItem(),
             ),
+            Gap(37),
             Text(
               "The Green Book",
               style: TextThemes.TextStyle18.copyWith(
@@ -35,7 +38,6 @@ class BookDetailsViewBody extends StatelessWidget {
                 fontWeight: FontWeight.normal,
               ),
             ),
-            //Gap(6),
             Text(
               "The Green Book",
               style: TextThemes.TextStyle16.copyWith(
@@ -43,7 +45,9 @@ class BookDetailsViewBody extends StatelessWidget {
               ),
             ),
             Gap(16),
-            BookRating(),
+            BookRating(mainAxisAlignment: MainAxisAlignment.center),
+            Gap(37),
+            BookActions(),
           ],
         ),
       ),
