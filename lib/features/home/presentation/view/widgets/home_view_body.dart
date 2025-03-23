@@ -2,7 +2,6 @@ import 'package:bookly/features/home/presentation/view/widgets/home_view_app_bar
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/constants/assets_const.dart';
 import '../../../../../core/utils/styles.dart';
 import 'banner_list.dart';
 import 'best_seller_item.dart';
