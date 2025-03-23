@@ -61,3 +61,6 @@ class AppTheme {
 
   static const Duration navigationDuration = Duration(seconds: 1);
 }
+
+String kHomeView = '/home';
+String kBookDetails = '/book_details';

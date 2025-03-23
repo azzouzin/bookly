@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:bookly/features/splash/presentation/view/splash_view.dart';
 import 'package:bookly/features/home/presentation/view/home_view.dart';
 
+import '../constants/theme_const.dart';
 import 'custom_page_transitions.dart';
 
 abstract class AppRouter {
@@ -13,7 +14,7 @@ abstract class AppRouter {
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-        path: '/home',
+        path: kHomeView,
         pageBuilder: (context, state) => CustomTransitionPage(
           key: state.pageKey,
           child: const HomeView(),
@@ -21,7 +22,7 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-        path: '/book_details',
+        path: kBookDetails,
         pageBuilder: (context, state) => CustomTransitionPage(
           key: state.pageKey,
           child: const BookDetailsView(),
