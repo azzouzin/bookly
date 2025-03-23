@@ -16,4 +16,9 @@ abstract class TextThemes {
     fontWeight: FontWeight.w500,
     color: Colors.grey,
   );
+  static TextStyle TextStyle14 = GoogleFonts.montserrat(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
 }
