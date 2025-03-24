@@ -30,6 +30,7 @@ environment:
 dependencies:
   blurrycontainer: ^2.1.0
   cupertino_icons: ^1.0.8
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.2
@@ -38,6 +39,7 @@ dependencies:
   gap: ^3.0.1
   go_router: ^14.8.1
   google_fonts: ^6.2.1
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
