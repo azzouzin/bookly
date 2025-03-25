@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:bookly/core/constants/assets_const.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 
@@ -10,29 +11,17 @@ class BannerListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 2.5 / 4,
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-              imageUrl,
-            ),
-          ),
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.grey,
-        ),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const BlurryContainer(
-              width: 50,
-              height: 50,
-              borderRadius: BorderRadius.all(Radius.circular(200)),
-              child: Icon(
-                FontAwesomeIcons.play,
-              ),
-            ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => Icon(Icons.error),
+          placeholder: (context, url) => BlurryContainer(
+            height: MediaQuery.of(context).size.height * 0.18,
+            width: MediaQuery.of(context).size.width,
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(AssetsData.testImage),
           ),
         ),
       ),
