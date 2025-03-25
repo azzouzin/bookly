@@ -35,7 +35,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Faillier, List<BookModel>>> fetchBestSellerBooks() async {
+  Future<Either<Faillier, List<BookModel>>> fetchNewSellerBooks() async {
     try {
       var data =
           await apiService.get(endPoint: 'volumes?q=flowers&orderBy=newest');
