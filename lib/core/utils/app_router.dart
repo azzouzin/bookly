@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/model/book_model.dart';
 import 'package:bookly/features/home/presentation/view/widgets/Book%20Details/book_details_view.dart';
 import 'package:bookly/features/home/presentation/view_models/banner_books_cubit/banner_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_models/new_books_cubit/cubit/new_books_cubit.dart';
@@ -31,7 +32,7 @@ abstract class AppRouter {
               BlocProvider(
                 create: (context) => NewBooksCubit(
                   getIt.get<HomeRepoImpl>(),
-                ),
+                )..fetchNewBooks(),
               ),
             ],
             child: child,
@@ -54,7 +55,9 @@ abstract class AppRouter {
             path: kBookDetails,
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
-              child: const BookDetailsView(),
+              child: BookDetailsView(
+                book: BookModel(),
+              ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
           ),

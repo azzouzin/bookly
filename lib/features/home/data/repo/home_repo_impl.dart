@@ -41,9 +41,11 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Faillier, List<BookModel>>> fetchNewSellerBooks() async {
     try {
       var data =
-          await apiService.get(endPoint: 'volumes?q=flowers&orderBy=newest');
+          await apiService.get(endPoint: '/volumes?q=flowers&orderBy=newest');
       List<BookModel> books = [];
-      books = BookModel.fromList(data.data['items']);
+      for (var element in data.data['items']) {
+        books.add(BookModel.fromJson(element));
+      }
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {

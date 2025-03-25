@@ -4,8 +4,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'banner_list.dart';
-import 'best_seller_item.dart';
-
+import 'bes_seller_list.dart';
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
@@ -44,24 +43,6 @@ class HomeViewBody extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class BestSellerList extends StatelessWidget {
-  const BestSellerList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 15,
-      itemBuilder: (context, index) {
-        return BestSellerItem();
-      },
-      separatorBuilder: (context, index) => Gap(10),
     );
   }
 }

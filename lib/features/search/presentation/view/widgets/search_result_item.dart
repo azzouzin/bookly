@@ -60,7 +60,10 @@ class SearchResultItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                       BookRating(),
+                      BookRating(
+                        rating: " 4.5",
+                        count: " 1000",
+                      ),
                     ],
                   ),
                 ],

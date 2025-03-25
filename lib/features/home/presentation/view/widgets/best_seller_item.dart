@@ -1,4 +1,6 @@
 import 'package:bookly/core/constants/theme_const.dart';
+import 'package:bookly/core/utils/widgets/custom_book_image.dart';
+import 'package:bookly/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -8,8 +10,8 @@ import '../../../../../core/utils/styles.dart';
 import 'book_rating_app.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,12 +22,10 @@ class BestSellerItem extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
-                    image: AssetImage(AssetsData.testImage),
-                  ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: CustomBookImage(
+                  imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? "",
                 ),
               ),
             ),
@@ -35,7 +35,7 @@ class BestSellerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Harry Potter and the Philosopher's Stone ",
+                    bookModel.volumeInfo?.title ?? "",
                     maxLines: 2,
                     overflow: TextOverflow.fade,
                     style: TextThemes.TextStyle18.copyWith(
@@ -43,20 +43,23 @@ class BestSellerItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "J.K Rowling",
+                    bookModel.volumeInfo?.authors?[0] ?? "",
                     style: TextThemes.TextStyle16,
                   ),
                   Spacer(),
                   Row(
                     children: [
                       Text(
-                        "19.99 \$",
+                        "Free",
                         style: TextThemes.TextStyle18.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Spacer(),
-                      BookRating(),
+                      BookRating(
+                        rating: bookModel.volumeInfo!.pageCount!.toString(),
+                        count: bookModel.volumeInfo!.pageCount!.toString(),
+                      ),
                     ],
                   ),
                   Gap(5),

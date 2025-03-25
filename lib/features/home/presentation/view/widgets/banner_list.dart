@@ -21,8 +21,7 @@ class BannerList extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.all(8),
                   child: BannerListItem(
-                    imageUrl:
-                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                    book: state.books[index],
                   ),
                 );
               },

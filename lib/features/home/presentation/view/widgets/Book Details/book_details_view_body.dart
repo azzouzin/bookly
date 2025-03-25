@@ -1,12 +1,12 @@
-
+import 'package:bookly/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import '../books_actions.dart';
 import 'book_details_section.dart';
 import 'recommanded_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,9 @@ class BookDetailsViewBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  BookDetailsSection(),
+                  BookDetailsSection(
+                    bookModel: bookModel,
+                  ),
                   BookActions(),
                 ],
               ),

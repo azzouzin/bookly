@@ -1,15 +1,18 @@
+import 'package:bookly/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import 'book_details_view_body.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({Key? key}) : super(key: key);
-
+  const BookDetailsView({Key? key, required this.book}) : super(key: key);
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: BookDetailsViewBody(),
+        child: BookDetailsViewBody(
+          bookModel: book,
+        ),
       ),
     );
   }

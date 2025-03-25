@@ -1,5 +1,9 @@
+import 'package:bookly/core/utils/widgets/custom_loading_widget.dart';
+import 'package:bookly/features/home/presentation/view_models/new_books_cubit/cubit/new_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/widgets/error_widget.dart';
 import 'banner_list_item.dart';
 
 class RecomandedBooksList extends StatelessWidget {
@@ -7,22 +11,29 @@ class RecomandedBooksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.18,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(8),
-            child: const BannerListItem(
-              imageUrl:
-                  'https://play-lh.googleusercontent.com/DCHwenH7ooYXZf2wGZVb0dkt6wMaHgG_qR69hGabMywWz7fciPqyu-O8hLL4ZM0D1Z3BgccPIB7TgFvvh8E=w240-h480-rw',
+    return BlocBuilder<NewBooksCubit, NewBooksState>(
+      builder: (context, state) {
+        if (state is NewBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.18,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.all(8),
+                  child: BannerListItem(book: state.books[index]),
+                );
+              },
+              itemCount: state.books.length,
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
             ),
           );
-        },
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-      ),
+        } else if (state is NewBooksFailure) {
+          return CustomErrorWidget(errorMessage: state.errMessage);
+        } else {
+          return CustomLoadingindicator();
+        }
+      },
     );
   }
 }
