@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
 
-abstract class Faillier {}
+abstract class Faillier {
+  final String message;
+  const Faillier(this.message);
+}
 
 class ServerFaillier implements Faillier {
+  @override
   final String message;
   ServerFaillier(this.message);
 
@@ -46,8 +50,23 @@ class ServerFaillier implements Faillier {
   }
 }
 
-class CacheFaillier implements Faillier {}
+class CacheFaillier implements Faillier {
+  @override
+  final String message;
 
-class OfflineFaillier implements Faillier {}
+  CacheFaillier(this.message);
+}
 
-class NetworkFaillier implements Faillier {}
+class OfflineFaillier implements Faillier {
+  @override
+  final String message;
+
+  OfflineFaillier(this.message);
+}
+
+class NetworkFaillier implements Faillier {
+  @override
+  final String message;
+
+  NetworkFaillier(this.message);
+}
