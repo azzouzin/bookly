@@ -32,7 +32,7 @@ class ServerFaillier implements Faillier {
     }
   }
 
-  factory ServerFaillier.fromServerError(int statusCode, Map response) {
+  factory ServerFaillier.fromServerError(int statusCode, dynamic response) {
     switch (statusCode) {
       case 500:
         return ServerFaillier("Internal server error");

@@ -16,58 +16,65 @@ import 'custom_page_transitions.dart';
 import 'service_locator.dart';
 
 abstract class AppRouter {
+  // Create a ShellRoute that wraps all routes with the necessary BlocProviders
   static final router = GoRouter(
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const SplashView(),
-      ),
-      GoRoute(
-        path: kHomeView,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const HomeView(),
-          transitionsBuilder: CustomPageTransitions.slideTransition,
-        ),
-      ),
-      GoRoute(
-        path: kBookDetails,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const BookDetailsView(),
-          transitionsBuilder: CustomPageTransitions.slideTransition,
-        ),
-      ),
-      // Add this import
-
-      // Add this route to your GoRouter configuration
-      GoRoute(
-        path: '/search',
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const SearchView(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
-              child: child,
-            );
-          },
-        ),
+      ShellRoute(
+        builder: (context, state, child) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => BannerBooksCubit(
+                  getIt.get<HomeRepoImpl>(),
+                )..fetchBannerBooks(),
+              ),
+              BlocProvider(
+                create: (context) => NewBooksCubit(
+                  getIt.get<HomeRepoImpl>(),
+                ),
+              ),
+            ],
+            child: child,
+          );
+        },
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => const SplashView(),
+          ),
+          GoRoute(
+            path: kHomeView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const HomeView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: kBookDetails,
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const BookDetailsView(),
+              transitionsBuilder: CustomPageTransitions.slideTransition,
+            ),
+          ),
+          GoRoute(
+            path: '/search',
+            pageBuilder: (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: const SearchView(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity:
+                      CurveTween(curve: Curves.easeInOut).animate(animation),
+                  child: child,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     ],
   );
-
-  static final providers = <BlocProvider>[
-    // Add this provider to your providers list
-    BlocProvider(
-      create: (context) => BannerBooksCubit(
-        getIt.get<HomeRepoImpl>(),
-      ),
-    ),
-    BlocProvider(
-      create: (context) => NewBooksCubit(
-        getIt.get<HomeRepoImpl>(),
-      ),
-    ),
-  ];
 }
