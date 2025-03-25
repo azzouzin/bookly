@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 
 class BannerListItem extends StatelessWidget {
-  const BannerListItem({super.key});
+  const BannerListItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -13,8 +14,8 @@ class BannerListItem extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(
-              AssetsData.testImage,
+            image: NetworkImage(
+              imageUrl,
             ),
           ),
           borderRadius: BorderRadius.circular(8),

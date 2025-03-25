@@ -20,10 +20,13 @@ class BannerList extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.all(8),
-                  child: const BannerListItem(),
+                  child: BannerListItem(
+                    imageUrl:
+                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                  ),
                 );
               },
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
             ),

@@ -19,7 +19,10 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.2,
           ),
-          child: BannerListItem(),
+          child: BannerListItem(
+            imageUrl:
+                'https://play-lh.googleusercontent.com/DCHwenH7ooYXZf2wGZVb0dkt6wMaHgG_qR69hGabMywWz7fciPqyu-O8hLL4ZM0D1Z3BgccPIB7TgFvvh8E=w240-h480-rw',
+          ),
         ),
         Gap(37),
         Text(

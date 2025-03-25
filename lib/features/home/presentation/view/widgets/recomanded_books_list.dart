@@ -13,7 +13,10 @@ class RecomandedBooksList extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.all(8),
-            child: const BannerListItem(),
+            child: const BannerListItem(
+              imageUrl:
+                  'https://play-lh.googleusercontent.com/DCHwenH7ooYXZf2wGZVb0dkt6wMaHgG_qR69hGabMywWz7fciPqyu-O8hLL4ZM0D1Z3BgccPIB7TgFvvh8E=w240-h480-rw',
+            ),
           );
         },
         itemCount: 10,
