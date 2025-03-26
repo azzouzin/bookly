@@ -5,8 +5,8 @@ import 'book_details_section.dart';
 import 'recommanded_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BookDetailsViewBody({super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   BookDetailsSection(
-                    bookModel: bookModel,
+                
                   ),
                   BookActions(),
                 ],

@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/widgets/custom_loading_widget.dart';
 import 'package:bookly/features/home/presentation/view_models/new_books_cubit/cubit/new_books_cubit.dart';
+import 'package:bookly/features/home/presentation/view_models/simmilair_books/simmilair_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,9 +12,9 @@ class RecomandedBooksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewBooksCubit, NewBooksState>(
+    return BlocBuilder<SimmilairBooksCubit, SimmilairBooksState>(
       builder: (context, state) {
-        if (state is NewBooksSuccess) {
+        if (state is SimmailairBooksSuccess) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.18,
             child: ListView.builder(
@@ -28,7 +29,7 @@ class RecomandedBooksList extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
             ),
           );
-        } else if (state is NewBooksFailure) {
+        } else if (state is SimmailairBooksFailure) {
           return CustomErrorWidget(errorMessage: state.errMessage);
         } else {
           return CustomLoadingindicator();

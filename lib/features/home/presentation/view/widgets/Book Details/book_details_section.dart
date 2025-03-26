@@ -9,8 +9,10 @@ import '../book_rating_app.dart';
 import '../custom_app_bar.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BookDetailsSection({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +23,7 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: MediaQuery.of(context).size.width * 0.2,
           ),
           child: BannerListItem(
-            book: bookModel,
+            book: BookModel(),
           ),
         ),
         Gap(37),
@@ -42,8 +44,8 @@ class BookDetailsSection extends StatelessWidget {
         Gap(16),
         BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          count: bookModel.volumeInfo?.pageCount.toString() ?? "",
-          rating: bookModel.volumeInfo?.pageCount.toString() ?? "",
+          count: "(4.5)",
+          rating: "4.5",
         ),
         Gap(37),
       ],

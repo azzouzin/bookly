@@ -15,7 +15,7 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).push(kBookDetails),
+      onTap: () => GoRouter.of(context).push(kBookDetails, extra: bookModel),
       child: SizedBox(
         height: 130,
         child: Row(

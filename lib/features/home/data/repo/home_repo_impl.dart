@@ -58,10 +58,11 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Faillier, List<BookModel>>> fetchSimmilairBooks() async {
+  Future<Either<Faillier, List<BookModel>>> fetchSimmilairBooks(
+      String category) async {
     try {
       var data = await apiService.get(
-          endPoint: '/volumes?q=flowers&sorting=relevance&orderBy=newest');
+          endPoint: '/volumes?q=$category&sorting=relevance&orderBy=newest');
       List<BookModel> books = [];
       for (var element in data.data['items']) {
         books.add(BookModel.fromJson(element));

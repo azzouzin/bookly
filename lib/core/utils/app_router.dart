@@ -2,6 +2,7 @@ import 'package:bookly/features/home/data/model/book_model.dart';
 import 'package:bookly/features/home/presentation/view/widgets/Book%20Details/book_details_view.dart';
 import 'package:bookly/features/home/presentation/view_models/banner_books_cubit/banner_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_models/new_books_cubit/cubit/new_books_cubit.dart';
+import 'package:bookly/features/home/presentation/view_models/simmilair_books/simmilair_books_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,8 +56,13 @@ abstract class AppRouter {
             path: kBookDetails,
             pageBuilder: (context, state) => CustomTransitionPage(
               key: state.pageKey,
-              child: BookDetailsView(
-                book: BookModel(),
+              child: BlocProvider(
+                create: (context) =>
+                    SimmilairBooksCubit(getIt.get<HomeRepoImpl>())
+                      ,
+                child: BookDetailsView(
+                  book: state.extra as BookModel,
+                ),
               ),
               transitionsBuilder: CustomPageTransitions.slideTransition,
             ),
