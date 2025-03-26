@@ -8,6 +8,7 @@ class CustomButton extends StatelessWidget {
       topLeft: Radius.circular(16),
       bottomLeft: Radius.circular(16),
     ),
+    required this.onPressed,
     required this.text,
     this.color = Colors.white,
     this.textColor = Colors.black,
@@ -16,10 +17,11 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final String text;
   final Color textColor;
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(0),
         backgroundColor: color,

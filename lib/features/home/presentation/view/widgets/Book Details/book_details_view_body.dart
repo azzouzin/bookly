@@ -23,7 +23,9 @@ class BookDetailsViewBody extends StatelessWidget {
                   BookDetailsSection(
                     bookModel: bookModel,
                   ),
-                  BookActions(),
+                  BookActions(
+                    bookModel: bookModel,
+                  ),
                 ],
               ),
             ),
