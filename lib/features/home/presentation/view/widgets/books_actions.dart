@@ -10,6 +10,10 @@ class BookActions extends StatelessWidget {
   });
   final BookModel bookModel;
 
+  bool checkAvailability() {
+    return bookModel.volumeInfo?.allowAnonLogging == true;
+  }
+
   Future<void> _launchUrl() async {
     if (bookModel.volumeInfo?.previewLink != null) {
       final Uri url = Uri.parse(bookModel.volumeInfo!.previewLink!);
