@@ -11,7 +11,10 @@ import '../custom_app_bar.dart';
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({
     super.key,
+    required this.bookModel,
   });
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,12 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: MediaQuery.of(context).size.width * 0.2,
           ),
           child: BannerListItem(
-            book: BookModel(),
+            book: bookModel,
           ),
         ),
         Gap(37),
         Text(
-          "The Green Book",
+          bookModel.volumeInfo!.title!,
           style: TextThemes.TextStyle18.copyWith(
             fontFamily: AssetsData.fontGT,
             fontSize: 30,
@@ -36,7 +39,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         Text(
-          "The Green Book",
+          bookModel.volumeInfo!.authors!.first,
           style: TextThemes.TextStyle16.copyWith(
             fontStyle: FontStyle.italic,
           ),

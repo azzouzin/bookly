@@ -8,13 +8,15 @@ class CustomLoadingindicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Center(child: CircularProgressIndicator());
+
     return Center(
       child: Shimmer(
         gradient: LinearGradient(
           colors: [
-            Colors.grey.shade300,
+            Colors.white,
             Colors.grey.shade400,
-            Colors.grey.shade300,
+            Colors.black,
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -26,6 +28,5 @@ class CustomLoadingindicator extends StatelessWidget {
         ),
       ),
     );
-    // return Center(child: CircularProgressIndicator());
   }
 }
